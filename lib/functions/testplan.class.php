@@ -6987,6 +6987,7 @@ class testplan extends tlObjectWithAttachments
                     " TPTCV.platform_id,PLAT.name AS platform_name,TPTCV.node_order AS execution_order,".
                     " COALESCE(E.status,'" . $this->notRunStatusCode . "') AS exec_status, " .
                     " E.execution_duration, " .
+                    " U.login AS executor, " .
                     ($my['options']['addImportance'] ? " TCV.importance," : '') .
                     $this->helperConcatTCasePrefix($safe['tplan_id']) . "  AS full_external_id ";
 
@@ -7043,6 +7044,8 @@ class testplan extends tlObjectWithAttachments
                          $platformEXEC .
                          " AND E.id = LEX.id " .  // TICKET 6159
                          $buildClause['exec_join'] .
+                         " LEFT OUTER JOIN {$this->tables['users']} U " .
+                         " ON U.id = E.tester_id " .
 
                          " WHERE TPTCV.testplan_id =" . $safe['tplan_id'] . ' ' .
                          $my['where']['where'] .
@@ -7072,6 +7075,8 @@ class testplan extends tlObjectWithAttachments
                      $platformEXEC .
                      " AND E.id = LEX.id " .  // TICKET 6159
                      $buildClause['exec_join'] .
+                     " JOIN {$this->tables['users']} U " .
+                     " ON U.id = E.tester_id " .
                          
                      " WHERE TPTCV.testplan_id =" . $safe['tplan_id'] . ' ' .
                      $my['where']['where'];
