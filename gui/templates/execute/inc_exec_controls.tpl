@@ -85,12 +85,12 @@ Author : franciscom
                 <br />    
     		 			      <input type="submit" name="save_results[{$args_tcversion_id}]" 
     		 			        {$args_input_enable_mgmt}
-                      onclick="document.getElementById('save_button_clicked').value={$args_tcversion_id};return checkSubmitForStatusCombo('statusSingle_{$tcversion_id}','{$ResultsStatusCode.not_run}')"
+                      onclick="document.getElementById('save_button_clicked').value={$args_tcversion_id};return checkSubmitForStatusCombo2('statusSingle_{$tcversion_id}','{$ResultsStatusCode.not_run}','execution_duration')"
     		 			        value="{$args_labels.btn_save_tc_exec_results}" />
     		 			         
     		 			      <input type="submit" name="save_and_next[{$args_tcversion_id}]" 
     		 			        {$args_input_enable_mgmt}
-                      onclick="document.getElementById('save_button_clicked').value={$args_tcversion_id};return checkSubmitForStatusCombo('statusSingle_{$tcversion_id}','{$ResultsStatusCode.not_run}')"
+                      onclick="document.getElementById('save_button_clicked').value={$args_tcversion_id};return checkSubmitForStatusCombo2('statusSingle_{$tcversion_id}','{$ResultsStatusCode.not_run}','execution_duration')"
     		 			        value="{$args_labels.btn_save_exec_and_movetonext}" />
 
                   <input type="submit" name="move2next[{$args_tcversion_id}]" 
@@ -101,6 +101,7 @@ Author : franciscom
 
     		 			  {else}
      	    	        <input type="submit" id="do_bulk_save" name="do_bulk_save"
+                      onclick="return checkDoBulkSave('execution_duration')"
       	    	             value="{$args_labels.btn_save_tc_exec_results}"/>
 
     		 			  {/if}       

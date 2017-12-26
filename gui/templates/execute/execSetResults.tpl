@@ -151,6 +151,39 @@ function checkSubmitForStatusCombo(oid,statusCode2block)
   return true;
 }
 
+function checkSubmitForStatusCombo2(oid,statusCode2block,executionDuration)
+{
+  var access_key;
+  var isChecked;
+
+  if(document.getElementById(oid).value == statusCode2block)
+  {
+    alert_message(alert_box_title,warning_nothing_will_be_saved);
+    return false;
+  }
+
+  if(document.getElementById(executionDuration).value == "")
+  {
+    alert_message(alert_box_title,warning_nothing_will_be_saved);
+    return false;
+  }
+
+  return true;
+}
+
+function checkDoBulkSave(executionDuration)
+{
+  var access_key;
+  var isChecked;
+
+  if(document.getElementById(executionDuration).value == "")
+  {
+    alert_message(alert_box_title,warning_nothing_will_be_saved);
+    return false;
+  }
+  return true;
+}
+
 
 /**
  * 
